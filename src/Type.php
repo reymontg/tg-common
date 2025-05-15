@@ -16,4 +16,5 @@ namespace Reymon;
 
 interface Type extends \JsonSerializable
 {
+    public function toApi(): array|int|string;
 }
