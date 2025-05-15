@@ -1,0 +1,51 @@
+{
+    "name"       : "reymon/tg-common",
+    "description": "This package provides common classes shared by Reymon",
+    "keywords"   : [
+        "bot",
+        "api",
+        "telegram",
+        "telegram-api"
+    ],
+    "type"   : "library",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name" : "Mahdi",
+            "email": "mahdi.talaee1379@gmail.com"
+        },
+        {
+            "name" : "AmirHossein Jafari",
+            "email": "amirhosseinjafari8228@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Reymon\\": "./src"
+        },
+        "files": ["src/functions.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Reymon\\Test\\": "./tests"
+        }
+    },
+    "require": {
+        "php-64bit"   : ">=8.0",
+        "ext-json"    : "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit"          : "^9",
+        "amphp/php-cs-fixer-config": "^2"
+    },
+    "scripts": {
+        "build": [
+            "@cs-fix",
+            "@test"
+        ],
+        "cs"    : "php -d pcre.jit=0 vendor/bin/php-cs-fixer fix -v --diff --dry-run",
+        "cs-fix": "php -d pcre.jit=0 vendor/bin/php-cs-fixer fix -v --diff",
+        "test"  : "php -d zend.assertions=1 -d assert.exception=1 ./vendor/bin/phpunit --coverage-text tests"
+    }
+}
