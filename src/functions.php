@@ -15,6 +15,6 @@
 if (!function_exists('array_filter_null')) {
     function array_filter_null(array $array, int $mode = 0): array
     {
-        return array_filter($array, static fn ($v) => !is_null($v), $mode);
+        return array_filter($array, static fn ($v): bool => !is_null($v), $mode);
     }
 }
