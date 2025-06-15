@@ -14,7 +14,6 @@
 
 namespace Reymon\Type\Chat;
 
-use Override;
 use Reymon\Mtproto\Type;
 
 final class AdministratorRights implements Type
@@ -120,8 +119,29 @@ final class AdministratorRights implements Type
             'can_post_stories'       => $postStories,
             'can_edit_stories'       => $editStories,
             'can_delete_stories'     => $deleteStories,
-            'can_manage_topics'      => $manageTopics
+            'can_manage_topics'      => $manageTopics,
         ]);
+    }
+
+    public static function fromMtproto($adminiRights): self
+    {
+        return static::new(
+            $adminiRights['anonymous']      ?? false,
+            $adminiRights['other']          ?? false,
+            $adminiRights['manage_call']    ?? false,
+            $adminiRights['ban_users']      ?? false,
+            $adminiRights['add_admins']     ?? false,
+            $adminiRights['change_info']    ?? false,
+            $adminiRights['invite_users']   ?? false,
+            $adminiRights['delete_messages']?? false,
+            $adminiRights['post_messages']  ?? false,
+            $adminiRights['edit_messages']  ?? false,
+            $adminiRights['pin_messages']   ?? false,
+            $adminiRights['post_stories']   ?? false,
+            $adminiRights['edit_stories']   ?? false,
+            $adminiRights['delete_stories'] ?? false,
+            $adminiRights['manage_topics']  ?? false,
+        );
     }
 
     public function changeInfo(?bool $changeInfo = null): self
@@ -284,7 +304,7 @@ final class AdministratorRights implements Type
         return $this;
     }
 
-    #[Override]
+    #[\Override]
     public function toMtproto(): array
     {
         return \array_filter_null([
@@ -307,7 +327,7 @@ final class AdministratorRights implements Type
         ]);
     }
 
-    #[Override]
+    #[\Override]
     public function toApi(): array
     {
         return \array_filter_null([
@@ -332,7 +352,7 @@ final class AdministratorRights implements Type
     /**
      * @internal
      */
-    #[Override]
+    #[\Override]
     public function jsonSerialize(): array
     {
         return $this->toApi();
