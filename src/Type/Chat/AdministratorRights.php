@@ -331,6 +331,7 @@ final class AdministratorRights implements Type
     public function toApi(): array
     {
         return \array_filter_null([
+            'is_anonymous'           => $this->anonymous,
             'can_change_info'        => $this->changeInfo,
             'can_post_messages'      => $this->postMessages,
             'can_edit_messages'      => $this->editMessages,
@@ -339,10 +340,9 @@ final class AdministratorRights implements Type
             'can_invite_users'       => $this->inviteUsers,
             'can_pin_messages'       => $this->pinMessages,
             'can_promote_members'    => $this->promote,
-            'is_anonymous'           => $this->anonymous,
             'can_manage_video_chats' => $this->manageCall,
             'can_manage_chat'        => $this->manageChat,
-            'manage_topics'          => $this->manageTopics,
+            'can_manage_topics'      => $this->manageTopics,
             'can_post_stories'       => $this->postStories,
             'can_edit_stories'       => $this->editStories,
             'can_delete_stories'     => $this->deleteStories,
