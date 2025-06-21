@@ -88,7 +88,6 @@ final class AdministratorRights implements Type
     /**
      * @param bool $anonymous      Whether the user's presence in the chat is hidden
      * @param bool $manageChat     Whether the administrator can access the chat event log, boost list in channels, see channel members, report spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
-     * @param bool $videoChats     Whether the administrator can manage video chats
      * @param bool $banUsers       Whether the administrator can restrict, ban or unban chat members, or access supergroup statistics
      * @param bool $promote        Whether the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
      * @param bool $changeInfo     Whether the user is allowed to change the chat title, photo and other settings
@@ -307,7 +306,7 @@ final class AdministratorRights implements Type
     #[\Override]
     public function toMtproto(): array
     {
-        return \array_filter_null([
+        return array_filter_null([
             '_'               => 'chatAdminRights',
             'change_info'     => $this->changeInfo,
             'post_messages'   => $this->postMessages,
@@ -330,7 +329,7 @@ final class AdministratorRights implements Type
     #[\Override]
     public function toApi(): array
     {
-        return \array_filter_null([
+        return array_filter_null([
             'is_anonymous'           => $this->anonymous,
             'can_change_info'        => $this->changeInfo,
             'can_post_messages'      => $this->postMessages,
