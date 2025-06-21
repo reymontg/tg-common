@@ -72,9 +72,6 @@ jobs:
             composer update --optimize-autoloader --no-interaction --no-progress ${{ matrix.composer-flags }}
             composer info -D
 
-      # - name: Run tests
-        # run: composer test
-
       - name: Run style fixer
         env:
           PHP_CS_FIXER_IGNORE_ENV: 1
